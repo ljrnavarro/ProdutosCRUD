@@ -18,7 +18,7 @@ namespace SiteMercado.Domain.Commands
             AddNotifications(
                 new Contract()
                 .Requires()
-                //.AreNotEquals(Id, Guid.Empty, "Id", "Guid não pode ser vazio.")
+                .AreNotEquals(Id, Guid.Empty, "Id", "Guid não pode ser vazio.")
             );
         }
         
