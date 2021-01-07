@@ -1,6 +1,12 @@
 # Crud de Produtos
    
 -----------------------------------------------
+## Ferramentas e instruções ##
+ - Visual Studio Code ou Visual Studio para rodar o projeto .Net (.Net 5.0)
+ - SQL Server
+ - Postman
+ 
+ * A Infraestrutura foi construida via migrations caso queiram basta executar os comandos que EF cria as tabelas
 
 
 # Proposta de Solução
