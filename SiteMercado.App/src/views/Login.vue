@@ -68,13 +68,11 @@
 
 <script>
 import "vue2-animate/dist/vue2-animate.min.css";
-import ContaMixins from "../mixins/ContaMixins";
 import AuthMixins from "../mixins/AuthMixins";
-//import 'sweetalert2/src/SweetAlert/';
 
 export default {
   name: "login",
-  mixins: [ContaMixins, AuthMixins],
+  mixins: [AuthMixins],
   data() {
     return {
       showPassword: false,

@@ -46,10 +46,8 @@
 
 <script>
 // @ is an alias to /src
-import ContaMixins from '../../mixins/ContaMixins'
 
 export default {
-  mixins: [ContaMixins],
   props: {
     source: String,
     drawer: Boolean,

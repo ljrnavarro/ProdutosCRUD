@@ -216,7 +216,7 @@ export default {
         cancelButtonText: "Não",
       }).then((result) => {
         if (result.value) {
-          this.deleteProduct(id);
+          this.submitDeleteProduct(id);
           (async () => {
             await this.getAllProducts();
           })();
@@ -226,23 +226,50 @@ export default {
     confirmActionUpdate(product) {
       this.$refs.produtoCreateUpdate.openForm(product, 'update');
     },
-    deleteProduct: async function(id) {
-      await ProdutoRepository.delete({
-        Id: id,
-      });
-    },
     openDialogCreate() {
       this.$refs.produtoCreateUpdate.openForm(null, 'create');
     },
-    createProduct() {},
+    submitDeleteProduct: async function(id) {
+        await ProdutoRepository.delete({Id: id})
+         .then(response => {
+              if (response.data.sucess){
+                   this.showMessage(this.messageType.SUCCESS, "Produto Excluído com sucesso.",null);
+                   (async () => {this.getAllProducts();})();
+              }
+              else
+                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!", null);
+            })
+             .catch(error => {
+                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!" + error, null);
+            });
+      },
     submitCreate: async function(product) {
-      await ProdutoRepository.create(product);
-      await this.getAllProducts();
+      await ProdutoRepository.create(product)
+      .then(response => {
+              if (response.data.sucess){
+                   this.showMessage(this.messageType.SUCCESS, "Produto Incluido com sucesso.",null);
+                   (async () => {this.getAllProducts();})();
+              }
+              else
+                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!", null);
+            })
+             .catch(error => {
+                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!" + error, null);
+            })
     },
       submitUpdate: async function(product) {
-        console.log("produ update", product)
-      await ProdutoRepository.update(product);
-      await this.getAllProducts();
+        await ProdutoRepository.update(product)
+            .then(response => {
+              if (response.data.sucess){
+                   this.showMessage(this.messageType.SUCCESS, "Produto Alterado com sucesso.",null);
+                   (async () => {this.getAllProducts();})();
+              }
+              else
+                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!", null);
+            })
+             .catch(error => {
+                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!" + error, null);
+            })
     },
   },
 };
