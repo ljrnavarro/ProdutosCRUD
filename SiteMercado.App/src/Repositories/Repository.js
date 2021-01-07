@@ -16,6 +16,10 @@ const http = axios.create({
     },
 });
 
+http.defaults.headers.common = {
+    "Content-Type": "application/json"
+  }
+
 http.interceptors.response.use(function (response) {
     return response;
   }, function (error) {

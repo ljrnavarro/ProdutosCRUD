@@ -15,7 +15,7 @@ export default {
   },
 
   update(payload) {
-    return Repository.put(`${resource}`, {data: payload});
+    return Repository.put(`${resource}`, payload);
   },
 
   delete(payload) {

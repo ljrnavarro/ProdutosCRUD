@@ -150,8 +150,8 @@ import { RepositoryFactory } from "./../Repositories/RepositoryFactory";
 import ProdutoCard from "./../components/Produto/ProdutoCard";
 import ProdutoCreateUpdate from "./../components/Produto/ProdutoCreateUpdate";
 const ProdutoRepository = RepositoryFactory.get("produto");
-import axios from "axios";
-import store from "../store/store";
+//import axios from "axios";
+//import store from "../store/store";
 
 export default {
   name: "Produtos",
@@ -170,7 +170,7 @@ export default {
       page: 1,
       itemsPerPage: 4,
       sortBy: "name",
-      keys: ["Name", "Value", "image"],
+      keys: ["Name", "Value"],
       keysSortBy: ["Name", "Value"],
       items: [],
     };
@@ -236,33 +236,12 @@ export default {
     },
     createProduct() {},
     submitCreate: async function(product) {
-      //O PrototyPO não está funcionando muito bem para Post, usando o método tradicional
-      await axios({
-        method: "post", //put
-        url: "/api/v1/Product",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + store.state.token,
-        },
-        data: product,
-      });
-
-      //await ProdutoRepository.create(product);
+      await ProdutoRepository.create(product);
       await this.getAllProducts();
     },
       submitUpdate: async function(product) {
-      //O PrototyPO não está funcionando muito bem para Post, usando o método tradicional
-      await axios({
-        method: "put", //put
-        url: "/api/v1/Product",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + store.state.token,
-        },
-        data: product,
-      });
-
-      //await ProdutoRepository.create(product);
+        console.log("produ update", product)
+      await ProdutoRepository.update(product);
       await this.getAllProducts();
     },
   },
