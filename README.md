@@ -21,3 +21,4 @@
   - Autenticação JWT
   - Documentação da API via Swagger
   - Fluent API e Migrations
+  - Front End feito em Vue.js + Biblioteca Vuetify.
