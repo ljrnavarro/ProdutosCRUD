@@ -11,10 +11,12 @@ export default {
   },
 
   create(payload) {
+    console.log("create", payload)
     return Repository.post(`${resource}`, payload );
   },
 
   update(payload) {
+    console.log("update", payload)
     return Repository.put(`${resource}`, payload);
   },
 

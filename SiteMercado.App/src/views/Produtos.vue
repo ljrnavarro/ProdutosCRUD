@@ -192,8 +192,25 @@ export default {
   methods: {
     async getAllProducts() {
       this.overlay = true;
-      const { data } = await ProdutoRepository.get();
-      this.items = data;
+      await ProdutoRepository.get()
+        .then((response) => {
+          if (response.data) {
+            this.items = response.data;
+          } else
+            this.showMessage(
+              this.messageType.ERROR,
+              "Oops...Aconteceu algum problema!",
+              null
+            );
+        })
+        .catch((error) => {
+          this.showMessage(
+            this.messageType.ERROR,
+            "Oops...Aconteceu algum problema!",
+            null
+          );
+          console.log("Erro na Obtenção", error);
+        });
       this.overlay = false;
     },
     nextPage() {
@@ -224,52 +241,119 @@ export default {
       });
     },
     confirmActionUpdate(product) {
-      this.$refs.produtoCreateUpdate.openForm(product, 'update');
+      this.$refs.produtoCreateUpdate.openForm(product, "update");
     },
     openDialogCreate() {
-      this.$refs.produtoCreateUpdate.openForm(null, 'create');
+      this.$refs.produtoCreateUpdate.openForm(null, "create");
     },
     submitDeleteProduct: async function(id) {
-        await ProdutoRepository.delete({Id: id})
-         .then(response => {
-              if (response.data.sucess){
-                   this.showMessage(this.messageType.SUCCESS, "Produto Excluído com sucesso.",null);
-                   (async () => {this.getAllProducts();})();
-              }
-              else
-                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!", null);
-            })
-             .catch(error => {
-                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!" + error, null);
-            });
-      },
-    submitCreate: async function(product) {
-      await ProdutoRepository.create(product)
-      .then(response => {
-              if (response.data.sucess){
-                   this.showMessage(this.messageType.SUCCESS, "Produto Incluido com sucesso.",null);
-                   (async () => {this.getAllProducts();})();
-              }
-              else
-                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!", null);
-            })
-             .catch(error => {
-                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!" + error, null);
-            })
+      this.overlay = true;
+      await ProdutoRepository.delete({ Id: id })
+        .then((response) => {
+          if (response.data.sucess) {
+            this.showMessage(
+              this.messageType.SUCCESS,
+              "Produto Excluído com sucesso.",
+              null
+            );
+            (async () => {
+              this.getAllProducts();
+            })();
+            this.overlay = false;
+          } else {
+            this.showMessage(
+              this.messageType.ERROR,
+              "Oops...Aconteceu algum problema!",
+              null
+            );
+            console.log("Erro na Exclusão", response.data);
+            this.overlay = false;
+          }
+        })
+        .catch((error) => {
+          this.showMessage(
+            this.messageType.ERROR,
+            "Oops...Aconteceu algum problema!",
+            null
+          );
+          this.overlay = false;
+          console.log("Erro na Exclusão", error);
+        });
     },
-      submitUpdate: async function(product) {
-        await ProdutoRepository.update(product)
-            .then(response => {
-              if (response.data.sucess){
-                   this.showMessage(this.messageType.SUCCESS, "Produto Alterado com sucesso.",null);
-                   (async () => {this.getAllProducts();})();
-              }
-              else
-                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!", null);
-            })
-             .catch(error => {
-                 this.showMessage(this.messageType.ERROR, "Oops...Aconteceu algum problema!" + error, null);
-            })
+    submitCreate: async function(product) {
+      this.overlay = true;
+      await ProdutoRepository.create(product)
+        .then((response) => {
+          if (response.data.sucess) {
+            this.showMessage(
+              this.messageType.SUCCESS,
+              "Produto Incluido com sucesso.",
+              null
+            );
+            (async () => {
+              this.getAllProducts();
+            })();
+            this.overlay = false;
+          } else {
+            this.showMessage(
+              this.messageType.ERROR,
+              "Oops...Aconteceu algum problema!",
+              null
+            );
+            this.overlay = false;
+            console.log("Erro na Exclusão", response.data);
+          }
+        })
+        .catch((error) => {
+          this.showMessage(
+            this.messageType.ERROR,
+            "Oops...Aconteceu algum problema!" + error,
+            null
+          );
+          this.overlay = false;
+          console.log("Erro na Exclusão", error);
+        });
+    },
+    submitUpdate: async function(product) {
+      this.overlay = true;
+      await ProdutoRepository.update(product)
+        .then((response) => {
+          if (response.data.sucess) {
+            this.showMessage(
+              this.messageType.SUCCESS,
+              "Produto Alterado com sucesso.",
+              null
+            );
+            (async () => {
+              this.getAllProducts();
+            })();
+            this.overlay = false;
+          } else {
+            this.showMessage(
+              this.messageType.ERROR,
+              "Oops...Aconteceu algum problema!",
+              null
+            );
+            this.overlay = false;
+            console.log("Erro na Exclusão", response.data);
+          }
+        })
+        .catch((error) => {
+          this.showMessage(
+            this.messageType.ERROR,
+            "Oops...Aconteceu algum problema!" + error,
+            null
+          );
+          this.overlay = false;
+          console.log("Erro na Exclusão", error);
+        });
+    },
+    formatAsCurrency(value, dec) {
+      dec = dec || 0;
+      if (value === null) {
+        return 0;
+      }
+      return "" + value.toFixed(dec).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
     },
   },
 };

@@ -12,13 +12,16 @@ import store  from "./store/store"
 import 'vuetify/dist/vuetify.css';
 import '@fortawesome/fontawesome-free/css/all.css'
 import MessageBoxMixins from './../src/mixins/MessageBoxMixins.js'
-
+import VueTheMask from 'vue-the-mask'
+import VueCurrencyInput from 'vue-currency-input'
 
 Vue.use(Vuex);
 Vue.use(VueResource);
 Vue.use(VueSweetalert2);
 Vue.use(Vuetify)
 Vue.mixin(MessageBoxMixins);
+Vue.use(VueTheMask);
+Vue.use(VueCurrencyInput)
 
 
 new Vue({

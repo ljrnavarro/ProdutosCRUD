@@ -16,9 +16,17 @@
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field
-                    v-model="value"
+                <v-text-field
+                    v-model.lazy="value"
+                    prefix="R$"
                     label="Valor"
+                     v-currency="{
+                                  precision: 2,
+                                  autoDecimalMode:true,
+                                  currency: {
+                                    prefix: ''
+                                  }
+                                   }"
                     :rules="[(v) => !!v || 'Valor é Obrigatório']"
                   >
                   </v-text-field>
@@ -84,15 +92,12 @@ export default {
     valid: true,
     mode: "create",
     id: null,
-    ruleFiles: []
+    ruleFiles: [],
   }),
   methods: {
-    ruleFileCheck()
-    {
-      if (this.mode == 'create')
-       return [(v) => !!v  || 'Imagem é Obrigatória'] 
-      else
-       return []
+    ruleFileCheck() {
+      if (this.mode == "create") return [(v) => !!v || "Imagem é Obrigatória"];
+      else return [];
     },
     submitForm() {
       if (this.$refs.form.validate()) {
@@ -114,16 +119,17 @@ export default {
         this.value = product.Value;
         this.id = product.Id;
         this.image = product.Image;
-      }
+      } else this.value = null;
       this.mode = mode;
       this.showDialog = true;
-      this.ruleFiles = this.mode == 'create' ? [(v) => !!v  || 'Imagem é Obrigatória'] : []
+      this.ruleFiles =
+        this.mode == "create" ? [(v) => !!v || "Imagem é Obrigatória"] : [];
     },
     getProduct() {
       var product = {
         Id: this.id,
         Name: this.name,
-        Value: parseFloat(this.value).toFixed(2),
+        Value: this.value.replace(",", "."),
         Image: this.image,
       };
       return product;
