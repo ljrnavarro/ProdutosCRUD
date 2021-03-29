@@ -153,7 +153,6 @@ button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4caf50;
   border: 0;
   padding: 15px;
   color: #ffffff;
