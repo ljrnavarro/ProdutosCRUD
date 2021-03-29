@@ -3,7 +3,8 @@ import store from "../store/store";
 import router from "../router";
 
 // You can use your own logic to set your local or production domain
-const baseDomain = "/api/v1";
+const baseDomain = process.env.VUE_APP_ROOT_API;
+console.log("url",process.env.VUE_APP_ROOT_API);
 // The base URL is empty this time due we are using the jsonplaceholder API
 const baseURL = `${baseDomain}`;
 
