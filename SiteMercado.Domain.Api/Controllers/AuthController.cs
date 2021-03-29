@@ -22,7 +22,7 @@ namespace SiteMercado.Domain.Api.Controllers
     public class AuthController : ControllerBase
     {
         /// <summary>
-        /// Logina na API externa
+        /// Passar os dados de login no reader
         /// </summary>
         /// <returns></returns>
         [Route("login")]
