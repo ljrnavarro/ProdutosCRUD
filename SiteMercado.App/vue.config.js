@@ -1,18 +1,23 @@
 module.exports = {
+  pages: {
+    index: {
+      entry: 'src/main.js'
+    }
+  },
  devServer: {
     proxy: {
         '^/api': {
-            target: 'https://localhost:5001/',
+            target: 'http://localhost:5000/',
             ws: true,
-            changeOrigin: false,
+            changeOrigin: true,
             pathRewrite: {   
-              '^/api': 'https://localhost:5000/api' 
+              '^/api': 'http://localhost:5000/api' 
             },    
         }
     }
 },
   configureWebpack: {
-    devtool: 'source-map'
+    devtool: 'source-map',
   },
   "transpileDependencies": [
     "vuetify"
