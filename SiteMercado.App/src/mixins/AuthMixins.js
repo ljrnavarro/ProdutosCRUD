@@ -1,27 +1,11 @@
 import axios from "axios";
-//import store from "../store/store";
-
-// You can use your own logic to set your local or production domain
-//const baseDomain = "/api/v1";
-// The base URL is empty this time due we are using the jsonplaceholder API
-//const baseURL = `${baseDomain}`;
-
-
-/*const http = axios.create({
-    baseURL,
-    headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-    },
-});*/
-
 const AuthMixins = {
 methods: {
     loginGetToken: async function(login, password)
     {
        var retorno = await (async () => {
            var retorno;
-           await axios.post("/api/v1/Auth/Login", {}, {
+           await axios.post(process.env.VUE_APP_ROOT_API + "/Auth/Login", {}, {
                 auth: {
                   username: login,
                   password: password
