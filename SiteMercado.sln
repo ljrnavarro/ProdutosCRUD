@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMercado.Domain", "SiteMercado.Domain\SiteMercado.Domain.csproj", "{8F1D51BD-F3CD-4DE9-A0AB-C907F188822F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteMercado.Domain", "SiteMercado.Domain\SiteMercado.Domain.csproj", "{8F1D51BD-F3CD-4DE9-A0AB-C907F188822F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMercado.Domain.Api", "SiteMercado.Domain.Api\SiteMercado.Domain.Api.csproj", "{8EFE39F1-AC13-43D7-A9A2-171BF7E5A910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteMercado.Domain.Api", "SiteMercado.Domain.Api\SiteMercado.Domain.Api.csproj", "{8EFE39F1-AC13-43D7-A9A2-171BF7E5A910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMercado.Domain.Tests", "SiteMercado.Domain.Tests\SiteMercado.Domain.Tests.csproj", "{29C7797E-F837-47AC-A459-637FF5B4AC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteMercado.Domain.Tests", "SiteMercado.Domain.Tests\SiteMercado.Domain.Tests.csproj", "{29C7797E-F837-47AC-A459-637FF5B4AC8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteMercado.Domain.Infra", "SiteMercado.Domain.Infra\SiteMercado.Domain.Infra.csproj", "{D1D5FC42-FCF7-46D9-B55D-5D0F4ADE89B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteMercado.Domain.Infra", "SiteMercado.Domain.Infra\SiteMercado.Domain.Infra.csproj", "{D1D5FC42-FCF7-46D9-B55D-5D0F4ADE89B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8F1D51BD-F3CD-4DE9-A0AB-C907F188822F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +69,23 @@ Global
 		{D1D5FC42-FCF7-46D9-B55D-5D0F4ADE89B2}.Release|x64.Build.0 = Release|Any CPU
 		{D1D5FC42-FCF7-46D9-B55D-5D0F4ADE89B2}.Release|x86.ActiveCfg = Release|Any CPU
 		{D1D5FC42-FCF7-46D9-B55D-5D0F4ADE89B2}.Release|x86.Build.0 = Release|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Debug|x64.Build.0 = Debug|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Debug|x86.Build.0 = Debug|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Release|x64.ActiveCfg = Release|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Release|x64.Build.0 = Release|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Release|x86.ActiveCfg = Release|Any CPU
+		{C64D26A0-8569-4E54-841C-0D1B4E634ADD}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1785C82E-FF8C-4E96-A97A-91739CFFE493}
 	EndGlobalSection
 EndGlobal
