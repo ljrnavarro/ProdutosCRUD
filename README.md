@@ -8,6 +8,13 @@
  
  * A Infraestrutura foi construida via migrations caso queiram basta executar os comandos que EF cria as tabelas
 
+## Utilizando no docker ##
+ - Esta aplicação está dockerizada:
+ - 1. Imagem do SQL Server + entrypoint de criação e carga inicial de dados
+ - 2. Imagem do .Net Core
+ - 3. Imagem do App em Vuejs
+ 
+ comando para subir a aplicação: docker-compose up --build.
 
 # Proposta de Solução
 
