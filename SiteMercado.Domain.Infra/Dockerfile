@@ -2,14 +2,17 @@
 FROM mcr.microsoft.com/mssql/server:2019-latest
 USER root
 
+RUN apt-get update && \
+    apt-get install -y dos2unix
+
 # Create app directory
 RUN mkdir -p /usr/src/scripts
 WORKDIR /usr/src/scripts
 
 # Copy initialization scripts
 COPY ./scripts /usr/src/scripts
-
-RUN chmod +x /usr/src/scripts/entrypoint.sh;
+RUN dos2unix /usr/src/scripts/entrypoint.sh
+RUN chmod +x /usr/src/scripts/entrypoint.sh
 
 # Expose port 1433 in case accesing from other container
 EXPOSE 1433
@@ -17,4 +20,4 @@ EXPOSE 1433
 # Run Microsoft SQl Server and initialization script (at the same time)
 # Note: If you want to start MsSQL only (without initialization script) you can comment bellow line out, CMD entry from base image will be taken
 LABEL description="Executando o sql server e a importação de scripts..."
-CMD   /usr/src/scripts/entrypoint.sh & /opt/mssql/bin/sqlservr;
+CMD   /usr/src/scripts/entrypoint.sh & /opt/mssql/bin/sqlservr
